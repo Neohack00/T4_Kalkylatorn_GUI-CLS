@@ -16,6 +16,11 @@ namespace Kalkylator.GUI
             long result = Value1 + Value2;
             return result;
         }
+
+
+
+
+
         public bool SafeInput(string inputdata)
         {
 
