@@ -23,55 +23,72 @@ namespace Kalkylator.GUI
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string inputdata = textBox1.Text;
-            UpdateValue(inputdata, "Box1");
-
+            bool datastate = InputNum.SafeInput(inputdata);
+            if (datastate == true)
+            {
+                long Longdata = long.Parse(inputdata);
+                InputNum.Value1 = Longdata;
+            }
+            else
+            {
+                InputNum.Value1 = 0;
+                textBox1.Clear();
+            }
 
 
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             string inputdata = textBox2.Text;
-            UpdateValue(inputdata, "Box2");
-            
-           
-
-
-        }
-        //splitrar upp algorithmen methoden safeinput till två delar. En del är del av klassen Kalkylator och andra delen är en lokal metod.
-        //Den i klassen kontrollera om inga ick nummeriska karaktärer är med 
-        // den lokala delen kontrollerar och hanterar den del som är kopplat med funktionerna i Winform samt sätter värderna.
-        private void UpdateValue(string data, string RefCall)
-        {
-            bool inputState = InputNum.SafeInput(data);
-            if (inputState == true)
+            bool datastate = InputNum.SafeInput(inputdata);
+            if (datastate == true)
             {
-                long Longdata = long.Parse(data);
-                if(RefCall == "Box1")
-                {
-                    InputNum.Value1 = Longdata;
-                }
-                else if(RefCall == "Box2")
-                {
-                    InputNum.Value2 = Longdata;
-                }
-
+                long Longdata = long.Parse(inputdata);
+                InputNum.Value2 = Longdata;
             }
-            else if(inputState == false)
+            else
             {
-                if (RefCall == "Box1")
-                {
-                    InputNum.Value1 = 0;
-                    textBox1.Clear();
-                }
-                else if (RefCall == "Box2")
-                {
-                    InputNum.Value2 = 0;
-                    textBox2.Clear();
-                }
-
+                InputNum.Value2 = 0;
+                textBox2.Clear();
             }
         }
-        
+        //14 rader kod. plus med textBox1 är det 28 rader kod
+
+        //storleken på koden är ungefär lika stor mellan den seperata metoden och den sammalagda koden(textbox1 + textbox2) med samma funktion.
+        //Den onödig delen i denna metod är den del som ska avgöra vilken box den ska ändra osv, Det är detta som gör metoden större än det skulle ha behövt.
+        //Därför kan jag lika gärna ha koden direkt i textBoxfunktionerna än att dela på en metod. 
+        //För det skulle ändå blivit ungfär lika stor kod ändå och ta bort onödig sortings funktion
+
+        //private void UpdateValue(string data, string RefCall)
+        //{
+        //    bool inputState = InputNum.SafeInput(data);
+        //    if (inputState == true)
+        //    {
+        //        long Longdata = long.Parse(data);
+        //        if(RefCall == "Box1")
+        //        {
+        //            InputNum.Value1 = Longdata;
+        //        }
+        //        else if(RefCall == "Box2")
+        //        {
+        //            InputNum.Value2 = Longdata;
+        //        }
+        //    }
+        //    else if(inputState == false)
+        //    {
+        //        if (RefCall == "Box1")
+        //        {
+        //            InputNum.Value1 = 0;
+        //            textBox1.Clear();
+        //        }
+        //        else if (RefCall == "Box2")
+        //        {
+        //            InputNum.Value2 = 0;
+        //            textBox2.Clear();
+        //        }
+        //    }
+        //}
+        //// totalt 29 Rader 
 
 
         
