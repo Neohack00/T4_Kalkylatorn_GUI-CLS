@@ -16,6 +16,21 @@ namespace Kalkylator.GUI
             long result = Value1 + Value2;
             return result;
         }
+        public long Sub()
+        {
+            long result = Value1 - Value2;
+            return result;
+        }
+        public long Div()
+        {
+            long result = Value1 / Value2;
+            return result;
+        }
+        public long Mult()
+        {
+            long result = Value1 * Value2;
+            return result;
+        }
 
 
 

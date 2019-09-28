@@ -60,5 +60,24 @@ namespace Kalkylator.GUI
             long result = InputNum.Add();
             listBox1.Items.Add(result);
         }
+        //Sub
+        private void button2_Click(object sender, EventArgs e)
+        {
+            long result = InputNum.Sub();
+            listBox1.Items.Add(result);
+        }
+
+        //Div
+        private void button3_Click(object sender, EventArgs e)
+        {
+            long result = InputNum.Div();
+            listBox1.Items.Add(result);
+        }
+        //Mult
+        private void button4_Click(object sender, EventArgs e)
+        {
+            long result = InputNum.Mult();
+            listBox1.Items.Add(result);
+        }
     }
 }
