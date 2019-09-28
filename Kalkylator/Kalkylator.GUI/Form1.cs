@@ -17,100 +17,64 @@ namespace Kalkylator.GUI
         public Form1()
         {
             InitializeComponent();
+            InputNum.Value1 = 0;
+            InputNum.Value2 = 0;
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string inputdata = textBox1.Text;
-            SafeInput(inputdata, "Value 1");
-            
-          
+            UpdateValue(inputdata, "Box1");
+
+
 
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             string inputdata = textBox2.Text;
-            SafeInput(inputdata, "Value 2");
+            UpdateValue(inputdata, "Box2");
+            
+           
+
 
         }
-
-        private void SafeInput(string inputdata, string sender)
+        //splitrar upp algorithmen methoden safeinput till två delar. En del är del av klassen Kalkylator och andra delen är en lokal metod.
+        //Den i klassen kontrollera om inga ick nummeriska karaktärer är med 
+        // den lokala delen kontrollerar och hanterar den del som är kopplat med funktionerna i Winform samt sätter värderna.
+        private void UpdateValue(string data, string RefCall)
         {
-            
-            bool letterfree = true;
-            bool markfree = true;
-            bool numberApproved = false;
-            string abc = "abcdefghijklmnopqrstuvwxyzåäö";
-            string ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
-            string markers = "!#¤%&/()=?`´'*^~¨-_., <>½";
-
-            foreach (char inputwordx in inputdata)
+            bool inputState = InputNum.SafeInput(data);
+            if (inputState == true)
             {
-                string strx = inputwordx.ToString();
-                for (int i = 0; i <= 9; i++)
+                long Longdata = long.Parse(data);
+                if(RefCall == "Box1")
                 {
-                    string stri = i.ToString();
-                    if (strx == stri)
-                    {
-                        numberApproved = true;
-                    }
+                    InputNum.Value1 = Longdata;
                 }
-                foreach (char smallLetters in abc)
+                else if(RefCall == "Box2")
                 {
-                    string StrSletters = smallLetters.ToString();
-                    if (StrSletters == strx)
-                    {
-                        letterfree = false;
-                    }
+                    InputNum.Value2 = Longdata;
                 }
-                foreach (char BigLetters in ABC)
-                {
-                    string StrBletters = BigLetters.ToString();
-                    if (StrBletters == strx)
-                    {
-                        letterfree = false;
-                    }
-                }
-                foreach (char mark in markers)
-                {
-                    string Strmark = mark.ToString();
-                    if (Strmark == strx)
-                    {
-                        markfree = false;
-                    }
-                }
+
             }
-           
-            if (sender == "Value 1")
+            else if(inputState == false)
             {
-                if (textBox1.Visible == true && numberApproved == true && letterfree == true && markfree == true)
+                if (RefCall == "Box1")
                 {
-                    long longdata = long.Parse(inputdata);
-                    InputNum.Value1 = longdata;
-
-                }
-                else
-                {
-
                     InputNum.Value1 = 0;
-                    textBox1.Clear();              
+                    textBox1.Clear();
                 }
-            }
-            else if (sender == "Value 2")
-            {
-                if (textBox2.Visible == true && numberApproved == true && letterfree == true && markfree == true)
+                else if (RefCall == "Box2")
                 {
-                    long longdata = long.Parse(inputdata);
-                    InputNum.Value2 = longdata;
-                }
-                else
-                {
-
                     InputNum.Value2 = 0;
                     textBox2.Clear();
                 }
 
             }
         }
+        
+
+
+        
 
 
     }
