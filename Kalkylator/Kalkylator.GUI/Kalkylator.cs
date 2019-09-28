@@ -10,7 +10,12 @@ namespace Kalkylator.GUI
     {
         public long Value1 { get; set; }
         public long Value2 { get; set; }
-
+        
+        public long Add()
+        {
+            long result = Value1 + Value2;
+            return result;
+        }
 
     }
 }

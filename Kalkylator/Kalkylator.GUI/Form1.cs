@@ -13,6 +13,7 @@ namespace Kalkylator.GUI
     public partial class Form1 : Form
     {
         Kalkylator InputNum = new Kalkylator();
+       
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +21,21 @@ namespace Kalkylator.GUI
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             string inputdata = textBox1.Text;
+            SafeInput(inputdata, "Value 1");
+            
+          
+
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string inputdata = textBox2.Text;
+            SafeInput(inputdata, "Value 2");
+
+        }
+
+        private void SafeInput(string inputdata, string sender)
+        {
+            
             bool letterfree = true;
             bool markfree = true;
             bool numberApproved = false;
@@ -63,21 +79,39 @@ namespace Kalkylator.GUI
                     }
                 }
             }
-
-
-            if (textBox1.Visible == true && numberApproved == true && letterfree == true && markfree == true)
+           
+            if (sender == "Value 1")
             {
-                long longdata = long.Parse(inputdata);
-                InputNum.Value1 = longdata;
-                listBox1.Items.Add(InputNum.Value1);
-            }
-            else
-            {
-                textBox1.Clear();
-            }
+                if (textBox1.Visible == true && numberApproved == true && letterfree == true && markfree == true)
+                {
+                    long longdata = long.Parse(inputdata);
+                    InputNum.Value1 = longdata;
 
+                }
+                else
+                {
+
+                    InputNum.Value1 = 0;
+                    textBox1.Clear();              
+                }
+            }
+            else if (sender == "Value 2")
+            {
+                if (textBox2.Visible == true && numberApproved == true && letterfree == true && markfree == true)
+                {
+                    long longdata = long.Parse(inputdata);
+                    InputNum.Value2 = longdata;
+                }
+                else
+                {
+
+                    InputNum.Value2 = 0;
+                    textBox2.Clear();
+                }
+
+            }
         }
 
- 
+
     }
 }
