@@ -12,6 +12,7 @@ namespace Kalkylator.GUI
 {
     public partial class Form1 : Form
     {
+        Kalkylator InputNum = new Kalkylator();
         public Form1()
         {
             InitializeComponent();
@@ -67,7 +68,8 @@ namespace Kalkylator.GUI
             if (textBox1.Visible == true && numberApproved == true && letterfree == true && markfree == true)
             {
                 long longdata = long.Parse(inputdata);
-                InputNummber1.Num1 = longdata;
+                InputNum.Value1 = longdata;
+                listBox1.Items.Add(InputNum.Value1);
             }
             else
             {
@@ -76,5 +78,6 @@ namespace Kalkylator.GUI
 
         }
 
+ 
     }
 }

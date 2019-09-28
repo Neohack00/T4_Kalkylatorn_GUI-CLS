@@ -10,5 +10,7 @@ namespace Kalkylator.GUI
     {
         public long Value1 { get; set; }
         public long Value2 { get; set; }
+
+
     }
 }
