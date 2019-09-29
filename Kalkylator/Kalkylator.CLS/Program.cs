@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kalk.Component;
 
 namespace Kalkylator.CLS
 {
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
+            Kalk.Component.Kalkylator InputNum = new Kalk.Component.Kalkylator;
             string inputdata1;
             string inputdata2;
             bool ReDo = true;

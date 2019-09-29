@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Kalk.Component;
 namespace Kalkylator.GUI
 {
     public partial class Form1 : Form
     {
-        Kalkylator InputNum = new Kalkylator();
+        Kalk.Component.Kalkylator InputNum = new Kalk.Component.Kalkylator();
        
         public Form1()
         {
