@@ -57,27 +57,33 @@ namespace Kalkylator.GUI
         //Add button
         private void button1_Click(object sender, EventArgs e)
         {
-            long result = InputNum.Add();
-            listBox1.Items.Add(result);
+            InputNum.Add();
+            ShowResult();
         }
-        //Sub
+        //Sub Button
         private void button2_Click(object sender, EventArgs e)
         {
-            long result = InputNum.Sub();
-            listBox1.Items.Add(result);
+            InputNum.Sub();
+            ShowResult();
         }
 
-        //Div
+        //Div Button
         private void button3_Click(object sender, EventArgs e)
         {
-            long result = InputNum.Div();
-            listBox1.Items.Add(result);
+            InputNum.Div();
+            ShowResult();
         }
-        //Mult
+        //Mult Button
         private void button4_Click(object sender, EventArgs e)
         {
-            long result = InputNum.Mult();
-            listBox1.Items.Add(result);
+            InputNum.Mult();
+            ShowResult();
+
+        }
+
+        private void ShowResult()
+        {
+            listBox1.Items.Add(string.Format("{0} {1} {2} = {3}", InputNum.Value1, InputNum.Operation, InputNum.Value2, InputNum.Result));   
         }
     }
 }

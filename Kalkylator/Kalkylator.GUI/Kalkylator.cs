@@ -10,26 +10,30 @@ namespace Kalkylator.GUI
     {
         public long Value1 { get; set; }
         public long Value2 { get; set; }
-        
-        public long Add()
+        public long Result { get; set; }
+        public char Operation { get; set; }
+
+        public void Add()
         {
-            long result = Value1 + Value2;
-            return result;
+            Result = Value1 + Value2;
+            Operation = '+';
         }
-        public long Sub()
+        public void Sub()
         {
-            long result = Value1 - Value2;
-            return result;
+            Result = Value1 - Value2;
+            Operation = '-';
         }
-        public long Div()
+        public void Div()
         {
-            long result = Value1 / Value2;
-            return result;
+            Result = Value1 / Value2;
+            Operation = '/';
+
         }
-        public long Mult()
+        public void Mult()
         {
-            long result = Value1 * Value2;
-            return result;
+            Result = Value1 * Value2;
+            Operation = '*';
+
         }
 
 
