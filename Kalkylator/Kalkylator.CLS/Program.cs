@@ -23,9 +23,7 @@ namespace Kalkylator.CLS
             {
                 Console.WriteLine("Welcome to Kalkylator.CLS");
                 Console.WriteLine("You will select two value that will be calculated on an chossen operation\n");
-
                 Console.WriteLine("Let's start with select one of the folling Operation you want to use");
-
                 do
                 {
                     Console.WriteLine("Addition (+)\nSubtraction (-)\nDivision (/)\nMultiplication (*)");
@@ -50,20 +48,15 @@ namespace Kalkylator.CLS
                     }
                     Console.Clear();
                 } while (UserChoice != "*" && UserChoice != "/" && UserChoice != "+" && UserChoice != "-");
-                //if satser som avgör vilken symbol som använder har valt. Plus en do sats för att gör inputet säkert.
-
-
                 bool inputState = false;
+               
                 do
                 {
                     Console.Clear();
                     Console.WriteLine("Enter Value 1: ");
-                    inputdata1 = Console.ReadLine();
-                    //Skickar in datan på SafeInput för kontrollera om datan är ett nummer. Om detta är så fortsätt om inte skriv igen
-              
+                    inputdata1 = Console.ReadLine();            
                     inputState = Kalkylator.SafeInput(inputdata1);
                 } while (inputState == false);
-                //Omvandlar stringen till en Long och för in den till Kalkylator.Value1
                 longData = long.Parse(inputdata1);
                 Kalkylator.Value1 = longData;
       
@@ -77,8 +70,6 @@ namespace Kalkylator.CLS
                 } while (inputState == false);
                 longData = long.Parse(inputdata2);
                 Kalkylator.Value2 = longData;
-
-                //beror på vilken räken operation som har valts så kallas Kalkylator klassen för utföra uträkningem
                 if (Kalkylator.Operation == '+')
                 {
                     Kalkylator.Add();
@@ -95,11 +86,8 @@ namespace Kalkylator.CLS
                 {
                     Kalkylator.Mult();
                 }
-
-                //Kommer sen Skrivas ut resultat från de förvarande proppsen i Klassen.
                 Console.Clear();
                 Console.WriteLine("{0} {1} {2} = {3}\n", Kalkylator.Value1 , Kalkylator.Operation , Kalkylator.Value2 , Kalkylator.Result);
-                //Allt det kommer vara i en while loop där användaren kommer till frågas om den vill fortsätta eller sluta. Om sluta bryter vi loopen.
                 do
                 {
                     Console.WriteLine("Do you want to restart? 'Yes' or 'No': ");
